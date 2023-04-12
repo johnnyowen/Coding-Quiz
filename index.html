@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="./Assets/reset.css" />
+    <link rel="stylesheet" href="./Assets/style.css" />
+    <title>Quiz About Coding!</title>
+</head>
+<body>
+    <header>
+        <a href="./highscores.html" class="link">Highscores Here!</a>
+        <div id="timer">Time = <span id="timeLeft"></span></div>
+    </header>
+    <div id="firstPage">
+        <h1>Coding Quiz!!</h1>
+        <p>Guess all the answers before your time runs out!
+            Incorrect answers are penalized with time deduction!
+            Time left is your score, be fast and accurate!
+        </p>
+        <button type="button" id="start">Let's Go!</button>
+    </div>
+    <div id="questionPage" style="display: none">
+        <div id="question"><p></p></div>
+        <div id="choices">
+            <div class="choices" id="A" onclick="checkAnswer('A')">A</div>
+            <div class="choices" id="B" onclick="checkAnswer('B')">B</div>
+            <div class="choices" id="C" onclick="checkAnswer('C')">C</div>
+            <div class="choices" id="D" onclick="checkAnswer('D')">D</div>
+        </div>
+    </div>
+    <div id="highscorePage" style="display: none">
+        <h2>Your Score!</h2>
+        <div id="score"></div>
+        <input type="text" maxlength="3" placeholder="Your Initials"></input>
+        <button type="button" id="submitScore">Submit Score</button>
+        <button type="button" id="restart">Restart Quiz</button>
+    </div>
+    <script src="./Assets/script.js"></script>
+</body>
+</html> 
