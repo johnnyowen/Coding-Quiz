@@ -4,18 +4,18 @@ var questions = [
     question : "What does HTML Stand For?",
     answerA : "Hella Tight Modern Language",
     answerB : "Hypertext Markup Language",
-    answerC : "Heather, Todd, Mark, Leslie",
+    answerC : "Heather and Todd and Mark and Leslie",
     answerD : "Hold The Modem Language",
     answer : "B"
     } , {
-    question :"JavaScript adds ______ to webpages.",
-    answerA : "Style",
-    answerB : "Coffee-Colored Fonts",
+    question :"JavaScript adds _____ websites.",
+    answerA : "Text",
+    answerB : "Coffee",
     answerC : "Function",
     answerD : "Comments",
     answer : "C"
     } , {
-    question: "In CSS, the '*' is a/an ________ selector.",
+    question: "In CSS, the '*' is a/an _____ selector.",
     answerA : "ID",
     answerB : "Class",
     answerC : "Element",
@@ -26,7 +26,7 @@ var questions = [
     answerA : "1993",
     answerB : "1999",
     answerC : "Y2K",
-    answerD : "During the Covid-19 pandemic",
+    answerD : "Covid-19",
     answer : "A"
     } , {
     question:  "The website ____Hub is used to store code repositories and host pages.",
@@ -48,7 +48,7 @@ var questions = [
 var startButtonEl = document.getElementById('start')
 var timerEl = document.getElementById('timer')
 var timeLeftEl = document.getElementById('timeLeft')
-var timeLeft = 30;
+var timeLeft = 300;
 
 var firstPageEl = document.getElementById('firstPage')
 var questionPageEl = document.getElementById('questionPage')
@@ -74,6 +74,14 @@ var highScoresList = [];
 startButtonEl.addEventListener("click", startQuiz);
 restartButtonEl.addEventListener("click", restart);
 submitButtonEl.addEventListener("click", submit)
+
+// starts the quiz
+function startQuiz () {
+    firstPageEl.style.display = "none";
+    questionPageEl.style.display = "flex";
+    countdown ();
+    renderQuestion ();
+}
 
 // timer function
 function countdown () {
@@ -103,14 +111,6 @@ function renderQuestion () {
     answerD.innerHTML = q.answerD;
 }
 
-// starts the quiz
-function startQuiz () {
-    firstPageEl.style.display = "none";
-    questionPageEl.style.display = "flex";
-    countdown ();
-    renderQuestion ();
-}
-
 // checks answer, renders next q or final page
 function checkAnswer(answer) {
     if(answer == questions[runningQuestion].answer) {
@@ -122,7 +122,7 @@ function checkAnswer(answer) {
         runningQuestion++;
         renderQuestion();
     } else {
-        timerEl.style.display = "none";
+        timerEl.textContent = "Game Over";
         questionPageEl.style.display = "none";
         highscorePageEl.style.display = "flex";
         clearInterval(timerEl);
