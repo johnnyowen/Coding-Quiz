@@ -108,10 +108,10 @@ function countdown () {
         }
     }
     , 1000);
-    function myFn() {console.log('idle');}
-    var myTimer = setInterval(myFn, 1000);
-    clearInterval(myTimer);
-    myTimer = setInterval(myFn, 1000);
+    // function myFn() {console.log('idle');}
+    // var myTimer = setInterval(myFn, 1000);
+    // clearInterval(myTimer);
+    // myTimer = setInterval(myFn, 1000);
 }
 
 // renders questions in empty div
@@ -138,7 +138,6 @@ function checkAnswer(answer) {
         timerEl.textContent = "Game Over";
         questionPageEl.style.display = "none";
         highscorePageEl.style.display = "flex";
-        clearInterval(timerEl);
         scoreRender();
     }
 }
