@@ -73,18 +73,21 @@ var highScoresList = [];
 // event listeners
 startButtonEl.addEventListener("click", startQuiz);
 restartButtonEl.addEventListener("click", restart);
-submitButtonEl.addEventListener("click", submit)
+submitButtonEl.addEventListener("click", submit);
+
+// Records and saves previous scores
+function recordScores () {
+    highScoresList = JSON.parse(localStorage.getItem("highScoresList"));
+    if (!highScoresList) {
+        highScoresList = [];
+    }
+}
 
 // starts the quiz
 function startQuiz () {
+    recordScores ();
     firstPageEl.style.display = "none";
     questionPageEl.style.display = "flex";
-
-    //Todo
-    // if (!highScoresList) {
-    //     highScoresList = [];
-    // }
-
     countdown ();
     renderQuestion ();
 }
@@ -105,6 +108,10 @@ function countdown () {
         }
     }
     , 1000);
+    function myFn() {console.log('idle');}
+    var myTimer = setInterval(myFn, 1000);
+    clearInterval(myTimer);
+    myTimer = setInterval(myFn, 1000);
 }
 
 // renders questions in empty div
@@ -145,13 +152,37 @@ function scoreRender () {
 
 // restart button
 function restart () {
-    clearInterval(timeInterval);
     timerEl.style.display = "flex";
     highscorePageEl.style.display = "none";
-    timeLeft = 30;
     runningQuestion = 0;
+    resetTimer ();
     startQuiz ();
 }
+
+function resetTimer () {
+    timeLeft = 30;
+    timerEl.textContent = "Time = " + timeLeft;
+
+    // var timeInterval = setInterval(function () {
+    //     if (timeLeft > 0) {
+    //         timeLeftEl.textContent = timeLeft;
+    //         timeLeft--;
+    //     }
+    //     else if (timeLeft === 0) {
+    //         timerEl.textContent = 'Game Over';
+    //         clearInterval(timeInterval);
+    //         firstPageEl.style.display = "none";
+    //         questionPageEl.style.display = "none";
+    //         highscorePageEl.style.display = "flex";
+    //     }
+    // }
+    // , 1000);
+
+    // recordScores ();
+    // firstPageEl.style.display = "none";
+    // questionPageEl.style.display = "flex";
+    // renderQuestion ();
+};
 
 // submit score button
 function submit () {
@@ -164,4 +195,3 @@ function submit () {
 }
 
 // Timer funky after restart
-// Scores don't stay long
