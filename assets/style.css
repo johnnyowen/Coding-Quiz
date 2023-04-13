@@ -1,3 +1,7 @@
+:root {
+    
+}
+
 * {
     font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
     background-color: lavender;
@@ -34,4 +38,8 @@ body {
     border-radius: 5px;
     cursor: pointer;
     padding : 5px;
-} 
+}
+
+#high-scores-link {
+    color: ;
+}
