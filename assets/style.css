@@ -165,6 +165,8 @@ body {
 }
 #scoreList{
     margin: 5px;
+    color: var(--e);
+    font-size: 20px;
 }
 #HSP{
     margin: 5px;

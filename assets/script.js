@@ -48,7 +48,7 @@ var questions = [
 var startButtonEl = document.getElementById('start')
 var timerEl = document.getElementById('timer')
 var timeLeftEl = document.getElementById('timeLeft')
-var timeLeft = 300;
+var timeLeft = 30;
 
 var firstPageEl = document.getElementById('firstPage')
 var questionPageEl = document.getElementById('questionPage')
@@ -113,7 +113,7 @@ function renderQuestion () {
 
 // checks answer, renders next q or final page
 function checkAnswer(answer) {
-    if(answer == questions[runningQuestion].answer) {
+    if (answer == questions[runningQuestion].answer) {
         timeLeft += 5;
     } else {  
         timeLeft -= 5;
@@ -154,18 +154,8 @@ function submit () {
         score: scoreDiv
     };
     highScoresList.push(submitHighscore);
-    console.log(highScoresList)
     localStorage.setItem("highScoresList", JSON.stringify(highScoresList));
 }
 
-// Renders highscores in highscore page                    ***********************************************!!!
-function renderHighscores () {
-    var highScoresList = JSON.parse(localStorage.getItem("highScoresList"));
-    if (highScoresList !== null) {
-        for (var i = 0; i < highScoresList.length; i++) {
-            var li = document.createElement("li");
-            li.textContent = i+1 + ". " + highScoresList[i].name + " - " + highScoresList[i].score;
-            document.scoreList.appendChild(li);
-        }
-    }
-}
+// Timer funky after restart
+// Scores don't stay long
