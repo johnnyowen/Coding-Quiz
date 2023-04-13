@@ -1,4 +1,4 @@
-// Renders highscores in highscore page                    ***********************************************!!!
+// Renders highscores in highscore page
 renderHighscores();
 function renderHighscores () {
     var highScoresList = JSON.parse(localStorage.getItem("highScoresList"));

@@ -79,6 +79,12 @@ submitButtonEl.addEventListener("click", submit)
 function startQuiz () {
     firstPageEl.style.display = "none";
     questionPageEl.style.display = "flex";
+
+    //Todo
+    // if (!highScoresList) {
+    //     highScoresList = [];
+    // }
+
     countdown ();
     renderQuestion ();
 }
@@ -139,7 +145,7 @@ function scoreRender () {
 
 // restart button
 function restart () {
-    clearInterval(timerEl);
+    clearInterval(timeInterval);
     timerEl.style.display = "flex";
     highscorePageEl.style.display = "none";
     timeLeft = 30;
