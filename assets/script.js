@@ -134,6 +134,7 @@ function checkAnswer(answer) {
 function scoreRender () {
     scoreDiv.style.display = "flex"
     scoreDiv.innerHTML = timeLeft
+    scoreDiv = timeLeft
 }
 
 // restart button
@@ -150,14 +151,14 @@ function restart () {
 function submit () {
     var submitHighscore = {
         name: input.value,
-        score: score
+        score: scoreDiv
     };
     highScoresList.push(submitHighscore);
     console.log(highScoresList)
     localStorage.setItem("highScoresList", JSON.stringify(highScoresList));
 }
 
-// Renders highscores in highscore page                    ***********************************************
+// Renders highscores in highscore page                    ***********************************************!!!
 function renderHighscores () {
     var highScoresList = JSON.parse(localStorage.getItem("highScoresList"));
     if (highScoresList !== null) {
