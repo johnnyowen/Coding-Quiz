@@ -49,6 +49,7 @@ var startButtonEl = document.getElementById('start')
 var timerEl = document.getElementById('timer')
 var timeLeftEl = document.getElementById('timeLeft')
 var timeLeft = 30;
+var timeInterval;
 
 var firstPageEl = document.getElementById('firstPage')
 var questionPageEl = document.getElementById('questionPage')
@@ -94,7 +95,7 @@ function startQuiz () {
 
 // timer function
 function countdown () {
-    var timeInterval = setInterval(function () {
+    timeInterval = setInterval(function () {
         if (timeLeft > 0) {
             timeLeftEl.textContent = timeLeft;
             timeLeft--;
@@ -155,12 +156,18 @@ function restart () {
     highscorePageEl.style.display = "none";
     runningQuestion = 0;
     resetTimer ();
-    startQuiz ();
+    // startQuiz ();
+
+    recordScores ();
+    firstPageEl.style.display = "none";
+    questionPageEl.style.display = "flex";
+    renderQuestion ();
 }
 
 function resetTimer () {
-    timeLeft = 30;
+
     timerEl.textContent = "Time = " + timeLeft;
+    timeLeft = 30;
 
     // var timeInterval = setInterval(function () {
     //     if (timeLeft > 0) {
@@ -177,10 +184,6 @@ function resetTimer () {
     // }
     // , 1000);
 
-    // recordScores ();
-    // firstPageEl.style.display = "none";
-    // questionPageEl.style.display = "flex";
-    // renderQuestion ();
 };
 
 // submit score button
