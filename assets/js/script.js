@@ -77,7 +77,7 @@ restartButtonEl.addEventListener("click", restart);
 submitButtonEl.addEventListener("click", submit);
 
 // Records and saves previous scores
-function recordScores () {
+function recordScores() {
     highScoresList = JSON.parse(localStorage.getItem("highScoresList"));
     if (!highScoresList) {
         highScoresList = [];
@@ -85,16 +85,17 @@ function recordScores () {
 }
 
 // starts the quiz
-function startQuiz () {
-    recordScores ();
+function startQuiz() {
+    recordScores();
     firstPageEl.style.display = "none";
     questionPageEl.style.display = "flex";
-    countdown ();
-    renderQuestion ();
+    countdown();
+    timeLeftEl.textContent = timeLeft;
+    renderQuestion();
 }
 
 // timer function
-function countdown () {
+function countdown() {
     timeInterval = setInterval(function () {
         if (timeLeft > 0) {
             timeLeftEl.textContent = timeLeft;
@@ -109,10 +110,11 @@ function countdown () {
         }
     }
     , 1000);
+
 }
 
 // renders questions in empty div
-function renderQuestion () {
+function renderQuestion() {
     var q = questions[runningQuestion];
     question.innerHTML = "<p>" +q.question+ "</p>"
     answerA.innerHTML = q.answerA;
@@ -127,6 +129,9 @@ function checkAnswer(answer) {
         timeLeft += 5;
     } else {  
         timeLeft -= 5;
+        if (timeLeft < 0) {
+            timeLeft = 0;
+        }
     }
     if (runningQuestion < lastQuestion) {
         runningQuestion++;
@@ -140,28 +145,31 @@ function checkAnswer(answer) {
 }
 
 // renders scores page and sets timeLeft as score
-function scoreRender () {
+function scoreRender() {
     scoreDiv.style.display = "flex"
     scoreDiv.innerHTML = timeLeft
     scoreDiv = timeLeft
 }
 
 // restart button
-function restart () {
+function restart() {
+    clearInterval(timeInterval);
     timerEl.style.display = "flex";
     highscorePageEl.style.display = "none";
     runningQuestion = 0;
-    resetTimer ();
-    startQuiz ();
+    // timeLeft = 30;
+    timerEl.textContent = "Time = " + timeLeft;
+    // resetTimer();
+    startQuiz();
 }
 
-function resetTimer () {
-    // timeLeft = "";
-    timerEl.textContent = "Time = " + timeLeft;
-};
+// function resetTimer() {
+//     timeLeft = 30;
+//     timerEl.textContent = "Time = " + timeLeft;
+// };
 
 // submit score button
-function submit () {
+function submit() {
     var submitHighscore = {
         name: input.value,
         score: scoreDiv
