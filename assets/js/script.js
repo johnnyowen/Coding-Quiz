@@ -109,10 +109,6 @@ function countdown () {
         }
     }
     , 1000);
-    // function myFn() {console.log('idle');}
-    // var myTimer = setInterval(myFn, 1000);
-    // clearInterval(myTimer);
-    // myTimer = setInterval(myFn, 1000);
 }
 
 // renders questions in empty div
@@ -156,34 +152,12 @@ function restart () {
     highscorePageEl.style.display = "none";
     runningQuestion = 0;
     resetTimer ();
-    // startQuiz ();
-
-    recordScores ();
-    firstPageEl.style.display = "none";
-    questionPageEl.style.display = "flex";
-    renderQuestion ();
+    startQuiz ();
 }
 
 function resetTimer () {
-
+    // timeLeft = "";
     timerEl.textContent = "Time = " + timeLeft;
-    timeLeft = 30;
-
-    // var timeInterval = setInterval(function () {
-    //     if (timeLeft > 0) {
-    //         timeLeftEl.textContent = timeLeft;
-    //         timeLeft--;
-    //     }
-    //     else if (timeLeft === 0) {
-    //         timerEl.textContent = 'Game Over';
-    //         clearInterval(timeInterval);
-    //         firstPageEl.style.display = "none";
-    //         questionPageEl.style.display = "none";
-    //         highscorePageEl.style.display = "flex";
-    //     }
-    // }
-    // , 1000);
-
 };
 
 // submit score button
@@ -195,5 +169,3 @@ function submit () {
     highScoresList.push(submitHighscore);
     localStorage.setItem("highScoresList", JSON.stringify(highScoresList));
 }
-
-// Timer funky after restart
