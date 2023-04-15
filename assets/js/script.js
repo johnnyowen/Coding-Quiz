@@ -115,7 +115,7 @@ function countdown() {
 // renders questions in empty div
 function renderQuestion() {
     var q = questions[runningQuestion];
-    question.innerHTML = "<p>" +q.question+ "</p>"
+    questionEl.innerHTML = "<p>" +q.question+ "</p>"
     answerA.innerHTML = q.answerA;
     answerB.innerHTML = q.answerB;
     answerC.innerHTML = q.answerC;
