@@ -42,34 +42,34 @@ var questions = [
     answerC : "Modulus",
     answerD : "value/value",
     answer : "C"
-    }]
+    }];
 
 // Other variables
-var startButtonEl = document.getElementById('start')
-var timerEl = document.getElementById('timer')
-var timeLeftEl = document.getElementById('timeLeft')
+var startButtonEl = document.getElementById('start');
+var timerEl = document.getElementById('timer');
+var timeLeftEl = document.getElementById('timeLeft');
 var totalTime = 30;
 var timeLeft;
 var timeInterval;
 
-var firstPageEl = document.getElementById('firstPage')
-var questionPageEl = document.getElementById('questionPage')
-var highscorePageEl = document.getElementById('highscorePage')
+var firstPageEl = document.getElementById('firstPage');
+var questionPageEl = document.getElementById('questionPage');
+var highscorePageEl = document.getElementById('highscorePage');
 
-var questionEl = document.getElementById('question')
-var answerA = document.getElementById('A')
-var answerB = document.getElementById('B')
-var answerC = document.getElementById('C')
-var answerD = document.getElementById('D')
+var questionEl = document.getElementById('question');
+var answerA = document.getElementById('A');
+var answerB = document.getElementById('B');
+var answerC = document.getElementById('C');
+var answerD = document.getElementById('D');
 
-var restartButtonEl = document.getElementById('restart')
-var submitButtonEl = document.getElementById('submitScore')
+var restartButtonEl = document.getElementById('restart');
+var submitButtonEl = document.getElementById('submitScore');
 var scoreDiv = document.getElementById('score')
 
 var lastQuestion = questions.length - 1;
 var runningQuestion = 0;
-var input = document.querySelector('input')
-var scoreList = document.getElementById('scoreList')
+var input = document.querySelector('input');
+var scoreList = document.getElementById('scoreList');
 var highScoresList = [];
 
 // event listeners
@@ -83,7 +83,7 @@ function recordScores() {
     if (!highScoresList) {
         highScoresList = [];
     }
-}
+};
 
 // starts the quiz
 function startQuiz() {
@@ -95,7 +95,7 @@ function startQuiz() {
     timeLeftEl.textContent = timeLeft;
     countdown();
     renderQuestion();
-}
+};
 
 // timer function
 function countdown() {
@@ -115,7 +115,7 @@ function countdown() {
 // renders questions in empty div
 function renderQuestion() {
     var q = questions[runningQuestion];
-    questionEl.innerHTML = "<p>" +q.question+ "</p>"
+    questionEl.innerHTML = "<p>" +q.question+ "</p>";
     answerA.innerHTML = q.answerA;
     answerB.innerHTML = q.answerB;
     answerC.innerHTML = q.answerC;
@@ -150,9 +150,8 @@ function scoreRender() {
     firstPageEl.style.display = "none";
     questionPageEl.style.display = "none";
     highscorePageEl.style.display = "flex";
-
-    scoreDiv.style.display = "flex"
-    scoreDiv.innerHTML = timeLeft
+    scoreDiv.style.display = "flex";
+    scoreDiv.innerHTML = timeLeft;
 }
 
 // restart button
@@ -160,8 +159,8 @@ function restart() {
     highscorePageEl.style.display = "none";
     firstPageEl.style.display = 'flex';
     timeLeftEl.textContent = '';
-    timerEl.textContent = 'Time ='
-    timerEl.appendChild(timeLeftEl)
+    timerEl.textContent = 'Time =';
+    timerEl.appendChild(timeLeftEl);
 }
 
 
